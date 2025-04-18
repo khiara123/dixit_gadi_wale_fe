@@ -1,16 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const [showButton, setShowButton] = useState(false);
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
+
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // smooth scroll
+    });
+  };
   return (
     <div>
-      {/* <!-- Back to Top --> */}
-      <Link
-        to="#"
-        className="btn btn-secondary btn-lg-square rounded-circle back-to-top"
-      >
-        <i className="fa fa-arrow-up"></i>
-      </Link>
+      {showButton &&
+       <Link
+       onClick={scrollToTop}
+       className="btn btn-secondary btn-lg-square rounded-circle back-to-top"
+     >
+       <i className="fa fa-arrow-up"></i>
+     </Link>
+      }
+     
       {/* <!-- Footer Start --> */}
       <div
         className="container-fluid footer py-5 wow fadeIn"

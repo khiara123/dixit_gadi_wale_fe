@@ -144,10 +144,10 @@ const AddEmployee = () => {
       {(isAdharSubmitted && isOtpSubmitted) && (
         <div className="container bg-white shadow rounded p-4 my-4">
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <BasicInfo register={register} errors={errors} uploadProfile={handleProfile} />
-            <AddressInfo register={register} errors={errors} />
-            <BookingInfo register={register} errors={errors} />
-            <ProfessionalInfo register={register} errors={errors} control={control} />
+            <BasicInfo register={register} errors={errors} uploadProfile={handleProfile} watch = {watch} />
+            <AddressInfo register={register} errors={errors} watch = {watch} />
+            <BookingInfo register={register} errors={errors} watch = {watch} />
+            <ProfessionalInfo register={register} errors={errors} control={control} watch = {watch} />
 
             <div className="d-flex justify-content-end gap-2 mt-4">
               <button

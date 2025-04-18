@@ -138,8 +138,197 @@
 
 // export default BasicInfo
 
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 
+
+// const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) => {
+//   const [imageSrc, setImageSrc] = useState('');
+
+//   useEffect(() => {
+//     if (isEdit) {
+//       setImageSrc(profilePhoto);
+//     }
+//   }, [profilePhoto, isEdit]);
+
+//   const handleFileChange = (e) => {
+//     console.log("e.target.files[0]", e.target.files[0])
+//     if (e.target.files[0]) {
+//       const reader = new FileReader();
+//       let base64 = null;
+//       reader.onload = (e) => {
+//         base64 = e.target.result;
+//         if (base64) {
+//           uploadProfile(base64);
+//           setImageSrc(base64);
+//         }
+//       };
+//       reader.readAsDataURL(e.target.files[0]);
+//     }
+//   };
+
+//   const validateFile = (file) => {
+//         if(!isEdit) {
+//             if(file.length === 0) {
+//                 return 'Please upload a file'
+//               } else {
+//                 const allowFormat = ['image/jpeg','image/jpg', 'image/png'];
+//                 if(!allowFormat.includes(file[0].type)) return 'Please upload JPEG, PNG format'
+//               }
+//         } else{
+//             const allowFormat = ['image/jpeg','image/jpg', 'image/png'];
+//                 if(!allowFormat.includes(file[0].type)) return 'Please upload JPEG, PNG format'
+//         }
+              
+//        };
+
+//   return (
+//     <div className="container mt-4">
+//       <h4>Personal Information</h4>
+//       <p className="text-muted">Please fill all the basic details of the customer.</p>
+//       <hr />
+
+//       {/* Profile Photo Upload */}
+// <div className="mb-4">
+//   <label htmlFor="profilePhoto" className="form-label fw-bold">Profile Photo</label>
+//   <div className="d-flex align-items-center flex-column text-center">
+//     <div
+//       className="rounded-circle border border-secondary d-flex justify-content-center align-items-center overflow-hidden mb-2"
+//       style={{
+//         width: '140px',
+//         height: '140px',
+//         cursor: 'pointer',
+//         backgroundColor: '#f8f9fa',
+//       }}
+//       onClick={() => document.getElementById('profilePhotoInput').click()}
+//     >
+//       {imageSrc ? (
+//         <img
+//           src={imageSrc}
+//           alt="Profile"
+//           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+//         />
+//       ) : (
+//         <i className="bi bi-person-circle text-secondary" style={{ fontSize: '5rem' }}></i>
+//       )}
+//     </div>
+
+//     <input
+//   id="profilePhotoInput"
+//   name="profilePhoto"
+//   type="file"
+//   className="d-none"
+//   {...register("profilePhoto", {
+//     validate: validateFile,
+//     onChange: (e) => {
+//       handleFileChange(e);
+//     },
+//   })}
+// />
+//     <button
+//       className="btn btn-outline-primary btn-sm"
+//       type="button"
+//       onClick={() => document.getElementById('profilePhotoInput').click()}
+//     >
+//       {isEdit ? 'Change Photo' : 'Upload Photo'}
+//     </button>
+
+//     <div className="form-text">PNG, JPG up to 1MB</div>
+//     {errors?.profilePhoto?.message && <div className="text-danger mt-2">{errors.profilePhoto.message}</div>}
+//   </div>
+// </div>
+
+//       <div className="row g-3">
+//         <div className="col-md-6">
+//           <label htmlFor="firstName" className="form-label">First Name</label>
+//           <input
+//             type="text"
+//             id="firstName"
+//             className="form-control"
+//             {...register("firstName", {
+//               required: 'Please enter first name',
+//               pattern: { value: /^[A-Za-z]+$/, message: 'Please enter valid name' }
+//             })}
+//           />
+//           {errors?.firstName?.message && <div className="text-danger">{errors.firstName.message}</div>}
+//         </div>
+
+//         <div className="col-md-6">
+//           <label htmlFor="lastName" className="form-label">Last Name</label>
+//           <input
+//             type="text"
+//             id="lastName"
+//             className="form-control"
+//             {...register("lastName", {
+//               required: 'Please enter last name',
+//               pattern: { value: /^[A-Za-z]+$/, message: 'Please enter valid name' }
+//             })}
+//           />
+//           {errors?.lastName?.message && <div className="text-danger">{errors.lastName.message}</div>}
+//         </div>
+
+//         <div className="col-md-6">
+//           <label htmlFor="dateOfBirth" className="form-label">Date of Birth</label>
+//           <input
+//             type="date"
+//             id="dateOfBirth"
+//             className="form-control"
+//             {...register("dateOfBirth", { required: 'Please enter date of birth' })}
+//           />
+//           {errors?.dateOfBirth?.message && <div className="text-danger">{errors.dateOfBirth.message}</div>}
+//         </div>
+
+//         <div className="col-md-6">
+//           <label htmlFor="mobileNumber" className="form-label">Mobile Number</label>
+//           <input
+//             type="text"
+//             id="mobileNumber"
+//             className="form-control"
+//             {...register("mobileNumber", { required: 'Please enter mobile number' })}
+//           />
+//           {errors?.mobileNumber?.message && <div className="text-danger">{errors.mobileNumber.message}</div>}
+//         </div>
+
+//         <div className="col-md-6">
+//           <label htmlFor="alternateMobileNumber" className="form-label">Alternate Mobile Number</label>
+//           <input
+//             type="text"
+//             id="alternateMobileNumber"
+//             className="form-control"
+//             {...register("alternateMobileNumber", { required: 'Please enter alternate mobile number' })}
+//           />
+//           {errors?.alternateMobileNumber?.message && <div className="text-danger">{errors.alternateMobileNumber.message}</div>}
+//         </div>
+
+//         <div className="col-md-6">
+//           <label htmlFor="addharNumber" className="form-label">Aadhaar Number</label>
+//           <input
+//             type="text"
+//             id="addharNumber"
+//             className="form-control"
+//             {...register("addharNumber", { required: 'Please enter Aadhaar number' })}
+//           />
+//           {errors?.addharNumber?.message && <div className="text-danger">{errors.addharNumber.message}</div>}
+//         </div>
+
+//         <div className="col-md-6">
+//           <label htmlFor="dlNumber" className="form-label">DL Number</label>
+//           <input
+//             type="text"
+//             id="dlNumber"
+//             className="form-control"
+//             {...register("dlNumber", { required: 'Please enter DL number' })}
+//           />
+//           {errors?.dlNumber?.message && <div className="text-danger">{errors.dlNumber.message}</div>}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default BasicInfo;
+
+import React, { useEffect, useState } from 'react';
+import { differenceInYears } from 'date-fns';
 
 const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) => {
   const [imageSrc, setImageSrc] = useState('');
@@ -151,12 +340,10 @@ const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) =>
   }, [profilePhoto, isEdit]);
 
   const handleFileChange = (e) => {
-    console.log("e.target.files[0]", e.target.files[0])
     if (e.target.files[0]) {
       const reader = new FileReader();
-      let base64 = null;
       reader.onload = (e) => {
-        base64 = e.target.result;
+        const base64 = e.target.result;
         if (base64) {
           uploadProfile(base64);
           setImageSrc(base64);
@@ -167,20 +354,14 @@ const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) =>
   };
 
   const validateFile = (file) => {
-    console.log("999999", file)
-        if(!isEdit) {
-            if(file.length === 0) {
-                return 'Please upload a file'
-              } else {
-                const allowFormat = ['image/jpeg','image/jpg', 'image/png'];
-                if(!allowFormat.includes(file[0].type)) return 'Please upload JPEG, PNG format'
-              }
-        } else{
-            const allowFormat = ['image/jpeg','image/jpg', 'image/png'];
-                if(!allowFormat.includes(file[0].type)) return 'Please upload JPEG, PNG format'
-        }
-              
-       };
+    const allowedFormats = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (!isEdit && file.length === 0) {
+      return 'Please upload a file';
+    }
+    if (file.length > 0 && !allowedFormats.includes(file[0].type)) {
+      return 'Please upload JPEG, PNG format';
+    }
+  };
 
   return (
     <div className="container mt-4">
@@ -189,56 +370,57 @@ const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) =>
       <hr />
 
       {/* Profile Photo Upload */}
-<div className="mb-4">
-  <label htmlFor="profilePhoto" className="form-label fw-bold">Profile Photo</label>
-  <div className="d-flex align-items-center flex-column text-center">
-    <div
-      className="rounded-circle border border-secondary d-flex justify-content-center align-items-center overflow-hidden mb-2"
-      style={{
-        width: '140px',
-        height: '140px',
-        cursor: 'pointer',
-        backgroundColor: '#f8f9fa',
-      }}
-      onClick={() => document.getElementById('profilePhotoInput').click()}
-    >
-      {imageSrc ? (
-        <img
-          src={imageSrc}
-          alt="Profile"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      ) : (
-        <i className="bi bi-person-circle text-secondary" style={{ fontSize: '5rem' }}></i>
-      )}
-    </div>
+      <div className="mb-4">
+        <label htmlFor="profilePhoto" className="form-label fw-bold">Profile Photo</label>
+        <div className="d-flex align-items-center flex-column text-center">
+          <div
+            className="rounded-circle border border-secondary d-flex justify-content-center align-items-center overflow-hidden mb-2"
+            style={{
+              width: '140px',
+              height: '140px',
+              cursor: 'pointer',
+              backgroundColor: '#f8f9fa',
+            }}
+            onClick={() => document.getElementById('profilePhotoInput').click()}
+          >
+            {imageSrc ? (
+              <img
+                src={imageSrc}
+                alt="Profile"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            ) : (
+              <i className="bi bi-person-circle text-secondary" style={{ fontSize: '5rem' }}></i>
+            )}
+          </div>
 
-    <input
-  id="profilePhotoInput"
-  name="profilePhoto"
-  type="file"
-  className="d-none"
-  {...register("profilePhoto", {
-    validate: validateFile,
-    onChange: (e) => {
-      handleFileChange(e);
-    },
-  })}
-/>
-    <button
-      className="btn btn-outline-primary btn-sm"
-      type="button"
-      onClick={() => document.getElementById('profilePhotoInput').click()}
-    >
-      {isEdit ? 'Change Photo' : 'Upload Photo'}
-    </button>
+          <input
+            id="profilePhotoInput"
+            name="profilePhoto"
+            type="file"
+            className="d-none"
+            {...register("profilePhoto", {
+              validate: validateFile,
+              onChange: (e) => {
+                handleFileChange(e);
+              },
+            })}
+          />
+          <button
+            className="btn btn-outline-primary btn-sm"
+            type="button"
+            onClick={() => document.getElementById('profilePhotoInput').click()}
+          >
+            {isEdit ? 'Change Photo' : 'Upload Photo'}
+          </button>
+          <div className="form-text">PNG, JPG up to 1MB</div>
+          {errors?.profilePhoto?.message && <div className="text-danger mt-2">{errors.profilePhoto.message}</div>}
+        </div>
+      </div>
 
-    <div className="form-text">PNG, JPG up to 1MB</div>
-    {errors?.profilePhoto?.message && <div className="text-danger mt-2">{errors.profilePhoto.message}</div>}
-  </div>
-</div>
-
+      {/* Input Fields */}
       <div className="row g-3">
+        {/* First Name */}
         <div className="col-md-6">
           <label htmlFor="firstName" className="form-label">First Name</label>
           <input
@@ -247,12 +429,16 @@ const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) =>
             className="form-control"
             {...register("firstName", {
               required: 'Please enter first name',
-              pattern: { value: /^[A-Za-z]+$/, message: 'Please enter valid name' }
+              pattern: {
+                value: /^[A-Za-z\s]+$/,
+                message: 'Name should not contain special characters or numbers'
+              }
             })}
           />
           {errors?.firstName?.message && <div className="text-danger">{errors.firstName.message}</div>}
         </div>
 
+        {/* Last Name */}
         <div className="col-md-6">
           <label htmlFor="lastName" className="form-label">Last Name</label>
           <input
@@ -261,63 +447,101 @@ const BasicInfo = ({ register, errors, uploadProfile, isEdit, profilePhoto }) =>
             className="form-control"
             {...register("lastName", {
               required: 'Please enter last name',
-              pattern: { value: /^[A-Za-z]+$/, message: 'Please enter valid name' }
+              pattern: {
+                value: /^[A-Za-z\s]+$/,
+                message: 'Name should not contain special characters or numbers'
+              }
             })}
           />
           {errors?.lastName?.message && <div className="text-danger">{errors.lastName.message}</div>}
         </div>
 
+        {/* Date of Birth */}
         <div className="col-md-6">
           <label htmlFor="dateOfBirth" className="form-label">Date of Birth</label>
           <input
             type="date"
             id="dateOfBirth"
             className="form-control"
-            {...register("dateOfBirth", { required: 'Please enter date of birth' })}
+            {...register("dateOfBirth", {
+              required: 'Please enter date of birth',
+              validate: (value) => {
+                const age = differenceInYears(new Date(), new Date(value));
+                return age >= 18 || 'Candidate must be at least 18 years old';
+              }
+            })}
           />
           {errors?.dateOfBirth?.message && <div className="text-danger">{errors.dateOfBirth.message}</div>}
         </div>
 
+        {/* Mobile Number */}
         <div className="col-md-6">
           <label htmlFor="mobileNumber" className="form-label">Mobile Number</label>
           <input
             type="text"
             id="mobileNumber"
             className="form-control"
-            {...register("mobileNumber", { required: 'Please enter mobile number' })}
+            {...register("mobileNumber", {
+              required: 'Please enter mobile number',
+              pattern: {
+                value: /^[6-9]\d{9}$/,
+                message: 'Enter a valid 10-digit Indian mobile number'
+              }
+            })}
           />
           {errors?.mobileNumber?.message && <div className="text-danger">{errors.mobileNumber.message}</div>}
         </div>
 
+        {/* Alternate Mobile Number */}
         <div className="col-md-6">
           <label htmlFor="alternateMobileNumber" className="form-label">Alternate Mobile Number</label>
           <input
             type="text"
             id="alternateMobileNumber"
             className="form-control"
-            {...register("alternateMobileNumber", { required: 'Please enter alternate mobile number' })}
+            {...register("alternateMobileNumber", {
+              required: 'Please enter alternate mobile number',
+              pattern: {
+                value: /^[6-9]\d{9}$/,
+                message: 'Enter a valid 10-digit Indian mobile number'
+              }
+            })}
           />
           {errors?.alternateMobileNumber?.message && <div className="text-danger">{errors.alternateMobileNumber.message}</div>}
         </div>
 
+        {/* Aadhaar Number */}
         <div className="col-md-6">
           <label htmlFor="addharNumber" className="form-label">Aadhaar Number</label>
           <input
             type="text"
             id="addharNumber"
             className="form-control"
-            {...register("addharNumber", { required: 'Please enter Aadhaar number' })}
+            {...register("addharNumber", {
+              required: 'Please enter Aadhaar number',
+              pattern: {
+                value: /^\d{12}$/,
+                message: 'Enter a valid 12-digit Aadhaar number'
+              }
+            })}
           />
           {errors?.addharNumber?.message && <div className="text-danger">{errors.addharNumber.message}</div>}
         </div>
 
+        {/* Driving License Number */}
         <div className="col-md-6">
           <label htmlFor="dlNumber" className="form-label">DL Number</label>
           <input
             type="text"
             id="dlNumber"
             className="form-control"
-            {...register("dlNumber", { required: 'Please enter DL number' })}
+            {...register("dlNumber", {
+              required: 'Please enter DL number',
+              pattern: {
+                value: /^[A-Z]{2}\d{2}[ ]?\d{11}$/,
+                message: 'Enter a valid Indian DL number (e.g., MH14 20110000000)'
+              }
+            })}
           />
           {errors?.dlNumber?.message && <div className="text-danger">{errors.dlNumber.message}</div>}
         </div>

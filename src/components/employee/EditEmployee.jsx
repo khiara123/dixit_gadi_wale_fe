@@ -152,7 +152,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import BasicInfo from "./personalInfo/BasicInfo";
 import AddressInfo from "./adressInfo/AddressInfo";
-import AcadmicInfo from "./acadmicInfo/AcadmicInfo";
+import { differenceInHours, parseISO } from 'date-fns';
 import ProfessionalInfo from "./professionalInfo/ProfessionalInfo";
 import BookingInfo from "./bookingInfo/BookingInfo";
 import routeAuthenticator from "../../shared/Auth";
@@ -170,7 +170,7 @@ const EditEmployee = () => {
   const [profilePhoto, setProfilePhoto] = useState('');
   const { id } = useParams();
 
-  const { register, handleSubmit, formState: { errors }, control, reset } = useForm({
+  const { register, handleSubmit, formState: { errors }, control, reset, watch , setValue} = useForm({
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -193,9 +193,9 @@ const EditEmployee = () => {
         dropDateAndTime: '',
         vichelName: '',
         vichelNumber: '',
-        chargePerDay: '',
-        refundableAmount: '',
-        totalPayable: ''
+        chargePerDay: '500',
+        refundableAmount: '1000',
+        totalPayable: '1500'
       },
       tripInformation: [{
         hotelName: '',
@@ -208,7 +208,22 @@ const EditEmployee = () => {
 
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const bookingInformation = watch('bookingInformation');
 
+   useEffect(() => {
+      if (bookingInformation.pickupDateAndTime && bookingInformation.dropDateAndTime) {
+        const parsedPickup = parseISO(bookingInformation.pickupDateAndTime);
+        const parsedDrop = parseISO(bookingInformation.dropDateAndTime);
+        let hours = differenceInHours(parsedDrop, parsedPickup);
+        if (hours > 24) {
+          hours = Math.max(0, hours - 2);
+        }
+        const days = Math.max(1, Math.ceil(hours / 24));
+        const totalPayable = days * parseInt(bookingInformation.chargePerDay) + parseInt(bookingInformation.refundableAmount);
+        setValue('bookingInformation.totalPayable', totalPayable);
+      }
+    }, [bookingInformation.pickupDateAndTime, bookingInformation.dropDateAndTime, bookingInformation.chargePerDay, bookingInformation.refundableAmount, setValue]);
+  
   useEffect(() => {
     const employeeById = employeeList?.data?.find((employee) => employee._id === id);
     setProfilePhoto(employeeById?.profilePhoto);
@@ -271,10 +286,11 @@ const EditEmployee = () => {
           uploadProfile={handleProfile}
           isEdit={true}
           profilePhoto={profilePhoto}
+          watch = {watch}
         />
-        <AddressInfo register={register} errors={errors} />
-        <BookingInfo register={register} errors={errors} />
-        <ProfessionalInfo register={register} errors={errors} control={control} />
+        <AddressInfo register={register} errors={errors} watch = {watch} />
+        <BookingInfo register={register} errors={errors} watch = {watch} />
+        <ProfessionalInfo register={register} errors={errors} control={control} watch = {watch} />
         <div className="d-flex justify-content-end mt-3 gap-2">
           <button
             type="button"

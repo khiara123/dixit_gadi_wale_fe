@@ -74,140 +74,320 @@
 
 // export default BookingInfo
 
-import React from 'react';
+// import React from 'react';
 
-const BookingInfo = ({ register, errors }) => {
+// const BookingInfo = ({ register, errors }) => {
+//   return (
+//     <>
+//       <div className="container py-4">
+//         <div className="mb-4">
+//           <h2 className="h5">Booking Information</h2>
+//           <p className="text-muted">Please fill all the booking details of the customer.</p>
+//           <hr />
+//         </div>
+
+//         <div className="row gy-3">
+//           <div className="col-md-6">
+//             <div className="form-group">
+//               <label htmlFor="pickupDateAndTime">Pickup Date & Time</label>
+//               <input
+//                 type="datetime-local"
+//                 id="pickupDateAndTime"
+//                 className="form-control"
+//                 {...register("bookingInformation.pickupDateAndTime", {
+//                   required: 'Please enter pickup date and time',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.pickupDateAndTime?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.pickupDateAndTime.message}</div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div className="col-md-6">
+//             <div className="form-group">
+//               <label htmlFor="dropDateAndTime">Drop Date & Time</label>
+//               <input
+//                 type="datetime-local"
+//                 id="dropDateAndTime"
+//                 className="form-control"
+//                 {...register("bookingInformation.dropDateAndTime", {
+//                   required: 'Please enter drop date and time',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.dropDateAndTime?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.dropDateAndTime.message}</div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div className="col-md-6">
+//             <div className="form-group">
+//               <label htmlFor="vichelName">Vehicle Name</label>
+//               <input
+//                 type="text"
+//                 id="vichelName"
+//                 className="form-control"
+//                 {...register("bookingInformation.vichelName", {
+//                   required: 'Please enter vehicle name',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.vichelName?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.vichelName.message}</div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div className="col-md-6">
+//             <div className="form-group">
+//               <label htmlFor="vichelNumber">Vehicle Number</label>
+//               <input
+//                 type="text"
+//                 id="vichelNumber"
+//                 className="form-control"
+//                 {...register("bookingInformation.vichelNumber", {
+//                   required: 'Please enter vehicle number',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.vichelNumber?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.vichelNumber.message}</div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div className="col-md-4">
+//             <div className="form-group">
+//               <label htmlFor="chargePerDay">Charge Per Day</label>
+//               <input
+//                 type="number"
+//                 id="chargePerDay"
+//                 className="form-control"
+//                 {...register("bookingInformation.chargePerDay", {
+//                   required: 'Please enter charge per day',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.chargePerDay?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.chargePerDay.message}</div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div className="col-md-4">
+//             <div className="form-group">
+//               <label htmlFor="refundableAmount">Refundable Amount</label>
+//               <input
+//                 type="number"
+//                 id="refundableAmount"
+//                 className="form-control"
+//                 {...register("bookingInformation.refundableAmount", {
+//                   required: 'Please enter refundable amount',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.refundableAmount?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.refundableAmount.message}</div>
+//               )}
+//             </div>
+//           </div>
+
+//           <div className="col-md-4">
+//             <div className="form-group">
+//               <label htmlFor="totalPayable">Total Payable</label>
+//               <input
+//                 type="number"
+//                 id="totalPayable"
+//                 className="form-control"
+//                 {...register("bookingInformation.totalPayable", {
+//                   required: 'Please enter total payable amount',
+//                 })}
+//               />
+//               {errors?.bookingInformation?.totalPayable?.message && (
+//                 <div className="text-danger">{errors.bookingInformation.totalPayable.message}</div>
+//               )}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default BookingInfo;
+
+import React, { useEffect, useState } from 'react';
+
+const BookingInfo = ({ register, errors, setValue, getValues, watch }) => {
+  const [minDateTime, setMinDateTime] = useState('');
+
+  useEffect(() => {
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // local timezone adjustment
+    setMinDateTime(now.toISOString().slice(0, 16));
+  }, []);
+
+  const pickupDateTime = watch("bookingInformation.pickupDateAndTime");
+
   return (
-    <>
-      <div className="container py-4">
-        <div className="mb-4">
-          <h2 className="h5">Booking Information</h2>
-          <p className="text-muted">Please fill all the booking details of the customer.</p>
-          <hr />
+    <div className="container py-4">
+      <div className="mb-4">
+        <h2 className="h5">Booking Information</h2>
+        <p className="text-muted">Please fill all the booking details of the customer.</p>
+        <hr />
+      </div>
+
+      <div className="row gy-3">
+        {/* Pickup Date & Time */}
+        <div className="col-md-6">
+          <div className="form-group">
+            <label htmlFor="pickupDateAndTime">Pickup Date & Time</label>
+            <input
+              type="datetime-local"
+              id="pickupDateAndTime"
+              className="form-control"
+              min={minDateTime}
+              {...register("bookingInformation.pickupDateAndTime", {
+                required: 'Please enter pickup date and time',
+                validate: value => {
+                  const now = new Date();
+                  const inputDate = new Date(value);
+                  return inputDate >= now || 'Pickup date/time must be in the future';
+                }
+              })}
+            />
+            {errors?.bookingInformation?.pickupDateAndTime?.message && (
+              <div className="text-danger">{errors.bookingInformation.pickupDateAndTime.message}</div>
+            )}
+          </div>
         </div>
 
-        <div className="row gy-3">
-          <div className="col-md-6">
-            <div className="form-group">
-              <label htmlFor="pickupDateAndTime">Pickup Date & Time</label>
-              <input
-                type="datetime-local"
-                id="pickupDateAndTime"
-                className="form-control"
-                {...register("bookingInformation.pickupDateAndTime", {
-                  required: 'Please enter pickup date and time',
-                })}
-              />
-              {errors?.bookingInformation?.pickupDateAndTime?.message && (
-                <div className="text-danger">{errors.bookingInformation.pickupDateAndTime.message}</div>
-              )}
-            </div>
+        {/* Drop Date & Time */}
+        <div className="col-md-6">
+          <div className="form-group">
+            <label htmlFor="dropDateAndTime">Drop Date & Time</label>
+            <input
+              type="datetime-local"
+              id="dropDateAndTime"
+              className="form-control"
+              min={pickupDateTime || minDateTime}
+              {...register("bookingInformation.dropDateAndTime", {
+                required: 'Please enter drop date and time',
+                validate: value => {
+                  const pickup = new Date(pickupDateTime);
+                  const drop = new Date(value);
+                  return drop > pickup || 'Drop date/time must be after pickup date/time';
+                }
+              })}
+            />
+            {errors?.bookingInformation?.dropDateAndTime?.message && (
+              <div className="text-danger">{errors.bookingInformation.dropDateAndTime.message}</div>
+            )}
           </div>
+        </div>
 
-          <div className="col-md-6">
-            <div className="form-group">
-              <label htmlFor="dropDateAndTime">Drop Date & Time</label>
-              <input
-                type="datetime-local"
-                id="dropDateAndTime"
-                className="form-control"
-                {...register("bookingInformation.dropDateAndTime", {
-                  required: 'Please enter drop date and time',
-                })}
-              />
-              {errors?.bookingInformation?.dropDateAndTime?.message && (
-                <div className="text-danger">{errors.bookingInformation.dropDateAndTime.message}</div>
-              )}
-            </div>
+        {/* Vehicle Name */}
+        <div className="col-md-6">
+          <div className="form-group">
+            <label htmlFor="vichelName">Vehicle Name</label>
+            <input
+              type="text"
+              id="vichelName"
+              className="form-control"
+              maxLength={50}
+              {...register("bookingInformation.vichelName", {
+                required: 'Please enter vehicle name',
+                pattern: {
+                  value: /^[A-Za-z0-9 ]+$/,
+                  message: 'Vehicle name must not contain special characters'
+                },
+                maxLength: {
+                  value: 50,
+                  message: 'Vehicle name must be 50 characters or less'
+                }
+              })}
+            />
+            {errors?.bookingInformation?.vichelName?.message && (
+              <div className="text-danger">{errors.bookingInformation.vichelName.message}</div>
+            )}
           </div>
+        </div>
 
-          <div className="col-md-6">
-            <div className="form-group">
-              <label htmlFor="vichelName">Vehicle Name</label>
-              <input
-                type="text"
-                id="vichelName"
-                className="form-control"
-                {...register("bookingInformation.vichelName", {
-                  required: 'Please enter vehicle name',
-                })}
-              />
-              {errors?.bookingInformation?.vichelName?.message && (
-                <div className="text-danger">{errors.bookingInformation.vichelName.message}</div>
-              )}
-            </div>
+        {/* Vehicle Number */}
+        <div className="col-md-6">
+          <div className="form-group">
+            <label htmlFor="vichelNumber">Vehicle Number</label>
+            <input
+              type="text"
+              id="vichelNumber"
+              className="form-control"
+              placeholder="e.g. MH12AB1234"
+              {...register("bookingInformation.vichelNumber", {
+                required: 'Please enter vehicle number',
+                pattern: {
+                  value: /^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/,
+                  message: 'Enter valid Indian vehicle number (e.g., MH12AB1234)'
+                }
+              })}
+            />
+            {errors?.bookingInformation?.vichelNumber?.message && (
+              <div className="text-danger">{errors.bookingInformation.vichelNumber.message}</div>
+            )}
           </div>
+        </div>
 
-          <div className="col-md-6">
-            <div className="form-group">
-              <label htmlFor="vichelNumber">Vehicle Number</label>
-              <input
-                type="text"
-                id="vichelNumber"
-                className="form-control"
-                {...register("bookingInformation.vichelNumber", {
-                  required: 'Please enter vehicle number',
-                })}
-              />
-              {errors?.bookingInformation?.vichelNumber?.message && (
-                <div className="text-danger">{errors.bookingInformation.vichelNumber.message}</div>
-              )}
-            </div>
+        {/* Charge Per Day */}
+        <div className="col-md-4">
+          <div className="form-group">
+            <label htmlFor="chargePerDay">Charge Per Day</label>
+            <input
+              type="number"
+              id="chargePerDay"
+              className="form-control"
+              {...register("bookingInformation.chargePerDay", {
+                required: 'Please enter charge per day',
+              })}
+            />
+            {errors?.bookingInformation?.chargePerDay?.message && (
+              <div className="text-danger">{errors.bookingInformation.chargePerDay.message}</div>
+            )}
           </div>
+        </div>
 
-          <div className="col-md-4">
-            <div className="form-group">
-              <label htmlFor="chargePerDay">Charge Per Day</label>
-              <input
-                type="number"
-                id="chargePerDay"
-                className="form-control"
-                {...register("bookingInformation.chargePerDay", {
-                  required: 'Please enter charge per day',
-                })}
-              />
-              {errors?.bookingInformation?.chargePerDay?.message && (
-                <div className="text-danger">{errors.bookingInformation.chargePerDay.message}</div>
-              )}
-            </div>
+        {/* Refundable Amount */}
+        <div className="col-md-4">
+          <div className="form-group">
+            <label htmlFor="refundableAmount">Refundable Amount</label>
+            <input
+              type="number"
+              id="refundableAmount"
+              className="form-control"
+              {...register("bookingInformation.refundableAmount", {
+                required: 'Please enter refundable amount',
+              })}
+            />
+            {errors?.bookingInformation?.refundableAmount?.message && (
+              <div className="text-danger">{errors.bookingInformation.refundableAmount.message}</div>
+            )}
           </div>
+        </div>
 
-          <div className="col-md-4">
-            <div className="form-group">
-              <label htmlFor="refundableAmount">Refundable Amount</label>
-              <input
-                type="number"
-                id="refundableAmount"
-                className="form-control"
-                {...register("bookingInformation.refundableAmount", {
-                  required: 'Please enter refundable amount',
-                })}
-              />
-              {errors?.bookingInformation?.refundableAmount?.message && (
-                <div className="text-danger">{errors.bookingInformation.refundableAmount.message}</div>
-              )}
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <div className="form-group">
-              <label htmlFor="totalPayable">Total Payable</label>
-              <input
-                type="number"
-                id="totalPayable"
-                className="form-control"
-                {...register("bookingInformation.totalPayable", {
-                  required: 'Please enter total payable amount',
-                })}
-              />
-              {errors?.bookingInformation?.totalPayable?.message && (
-                <div className="text-danger">{errors.bookingInformation.totalPayable.message}</div>
-              )}
-            </div>
+        {/* Total Payable */}
+        <div className="col-md-4">
+          <div className="form-group">
+            <label htmlFor="totalPayable">Total Payable</label>
+            <input
+              type="number"
+              id="totalPayable"
+              className="form-control"
+              {...register("bookingInformation.totalPayable", {
+                required: 'Please enter total payable amount',
+              })}
+            />
+            {errors?.bookingInformation?.totalPayable?.message && (
+              <div className="text-danger">{errors.bookingInformation.totalPayable.message}</div>
+            )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
