@@ -1,0 +1,11 @@
+.loader-overlay {
+    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity */
+    pointer-events: none; /* Disable interaction with background elements */
+    display: flex; /* Ensure centering of the loader */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .spinner-border {
+    pointer-events: none; /* Ensure the spinner itself is not interactive */
+  }
