@@ -248,7 +248,9 @@ const BookingInfo = ({ register, errors, setValue, getValues, watch }) => {
                 required: 'Please enter pickup date and time',
                 validate: value => {
                   const now = new Date();
+                  now.setMinutes(now.getMinutes() - 30);
                   const inputDate = new Date(value);
+                 
                   return inputDate >= now || 'Pickup date/time must be in the future';
                 }
               })}

@@ -53,11 +53,12 @@ const Employee = () => {
   };
 
   const onPageChange = (page) => {
-   notifyParent(page, 5)
+   notifyParent(page, 10)
   };
 
   const printEmployee = (id) => {
     setIsLoading(true);
+    console.log("is Loding", isLoading)
     const employeeResponse = employeeService.printEmployee(id);
     employeeResponse
       .then((data) => {

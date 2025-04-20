@@ -9,7 +9,7 @@ import { Outlet } from 'react-router-dom';
 const RootEmployee = () => {
   const [employee, setEmployee] = useState(null);
   const dispatch = useDispatch();
-  const fetchEmployee = async (page=1 ,limit= 5) => {
+  const fetchEmployee = async (page=1 ,limit= 10) => {
     const employeeResponse = await employeeService.getAllEmployee(page ,limit);
     if (employeeResponse && employeeResponse?.data) {
       setEmployee(employeeResponse?.data);
@@ -24,7 +24,7 @@ const RootEmployee = () => {
   }, []);
 
 
-  const handleChildEvent = (page= 1 , limit =5) => {
+  const handleChildEvent = (page= 1 , limit =10) => {
     fetchEmployee( page , limit);
     
   };
