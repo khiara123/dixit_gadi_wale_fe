@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
@@ -13,35 +13,42 @@ const Footer = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }, [pathname]);
-
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // smooth scroll
+      behavior: "smooth", // smooth scroll
     });
   };
   return (
     <div>
-      {showButton &&
-       <div
-       onClick={scrollToTop}
-       className="btn btn-secondary btn-lg-square rounded-circle back-to-top"
-     >
-       <i className="fa fa-arrow-up"></i>
-     </div>
-      }
-     
+      <a
+       href="https://web.whatsapp.com/send?phone=8266006000&amp;text=Hi"
+        className="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+      </a>
+      {/* {showButton && (
+        <div
+          onClick={scrollToTop}
+          className="btn btn-secondary btn-lg-square rounded-circle back-to-top"
+        >
+          <i className="fa fa-arrow-up"></i>
+        </div>
+      )} */}
+
       {/* <!-- Footer Start --> */}
       <div
         className="container-fluid footer py-5 wow fadeIn"
@@ -54,10 +61,11 @@ const Footer = () => {
                 <div className="footer-item">
                   <h4 className="text-white mb-4">About Us</h4>
                   <p className="mb-3">
-                  We are a trusted name in vehicle rentals and general insurance, committed to delivering seamless mobility solutions and reliable coverage.
+                    We are a trusted name in vehicle rentals and general
+                    insurance, committed to delivering seamless mobility
+                    solutions and reliable coverage.
                   </p>
                 </div>
-              
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
@@ -72,11 +80,10 @@ const Footer = () => {
                 <Link to={"#"}>
                   <i className="fas fa-angle-right me-2"></i> Team
                 </Link>
-                
+
                 <Link to={"contact"}>
                   <i className="fas fa-angle-right me-2"></i> Contact us
                 </Link>
-                
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
@@ -90,17 +97,18 @@ const Footer = () => {
                   <h6 className="text-muted mb-0">Sunday:</h6>
                   <p className="text-white mb-0">10.00 am to 05.00 pm</p>
                 </div>
-             
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">
               <div className="footer-item d-flex flex-column">
                 <h4 className="text-white mb-4">Contact Info</h4>
                 <Link to={"#"}>
-                  <i className="fa fa-map-marker-alt me-2"></i> C-11 Opp. B.S.A, Engineering College, Mathura
+                  <i className="fa fa-map-marker-alt me-2"></i> C-11 Opp. B.S.A,
+                  Engineering College, Mathura
                 </Link>
                 <Link to={"mailto:info@example.com"}>
-                  <i className="fas fa-envelope me-2"></i> dixitgadiwale@gmail.com
+                  <i className="fas fa-envelope me-2"></i>{" "}
+                  dixitgadiwale@gmail.com
                 </Link>
                 <Link to={"tel:+012 345 67890"}>
                   <i className="fas fa-phone me-2"></i> +918266006000
@@ -136,7 +144,8 @@ const Footer = () => {
             <div className="col-md-6 text-center text-md-start mb-md-0">
               <span className="text-body">
                 <Link to={"#"} className="border-bottom text-white">
-                  <i className="fas fa-copyright text-light me-2"></i>www.dixitgadiwale.com
+                  <i className="fas fa-copyright text-light me-2"></i>
+                  www.dixitgadiwale.com
                 </Link>
                 , All right reserved.
               </span>
