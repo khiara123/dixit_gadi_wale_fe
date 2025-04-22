@@ -1,11 +1,20 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import { Link } from "react-router-dom";
+import { Seo } from "../shared/Seo";
 
 const Contact = () => {
   return (
     <>
+    {/* SEO */}
+       <Seo
+              title="Dixit Gadi wale | Trusted Car Rentals in Mathura | Bike Rent Mathura | Vintage Car in Mathura"
+              description="Book car and bike rentals in mathura easily with Dixit Gadiwale. Affordable, reliable, and available 24/7."
+              url="https://dixitgadiwale.com"
+              image="https://dixitgadiwale.com/img/carousel-2.jpg"
+            />
       {/* <!-- Header Start --> */}
+
       <div className="container-fluid bg-breadcrumb">
         <div
           className="container text-center py-5"

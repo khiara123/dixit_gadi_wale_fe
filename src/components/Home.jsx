@@ -8,11 +8,18 @@ import CarSteps from "./CarSteps";
 import { Banner } from "./Banner";
 import { TeamSupport } from "./TeamSupport";
 import { CentalServices } from "./CentalServices";
-
+import { Seo } from '../shared/Seo';
 
 const Home = () => {
   return (
     <div>
+      {/* SEO component */}
+      <Seo
+        title="Dixit Gadi wale | Trusted Car Rentals in Mathura | Bike Rent Mathura "
+        description="Book car and bike rentals in mathura easily with Dixit Gadiwale. Affordable, reliable, and available 24/7."
+        url="https://dixitgadiwale.com"
+        image="https://dixitgadiwale.com/img/carousel-2.jpg"
+      />
       {/* <!-- Carousel Start --> */}
       <div className="header-carousel">
         <div
