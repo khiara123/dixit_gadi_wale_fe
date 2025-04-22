@@ -6,7 +6,7 @@ import CarSteps from "./CarSteps";
 import { TeamSupport } from "./TeamSupport";
 import { Banner } from "./Banner";
 import { Link } from "react-router-dom";
-import { Seo } from "../shared/Seo";
+import Seo  from "../shared/Seo";
 
 const About = () => {
   return (

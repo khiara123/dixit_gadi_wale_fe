@@ -8,11 +8,11 @@ import CarSteps from "./CarSteps";
 import { Banner } from "./Banner";
 import { TeamSupport } from "./TeamSupport";
 import { CentalServices } from "./CentalServices";
-import { Seo } from '../shared/Seo';
+import  Seo  from '../shared/Seo';
 
 const Home = () => {
   return (
-    <div>
+    <div> 
       {/* SEO component */}
       <Seo
         title="Dixit Gadi wale | Trusted Car Rentals in Mathura | Bike Rent Mathura "

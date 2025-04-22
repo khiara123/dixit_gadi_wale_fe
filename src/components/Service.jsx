@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CentalServices } from "./CentalServices";
-import {Seo} from '../shared/Seo';
+import Seo from '../shared/Seo';
 
 const Service = () => {
   return (

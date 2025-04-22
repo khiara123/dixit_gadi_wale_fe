@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import { Link } from "react-router-dom";
-import { Seo } from "../shared/Seo";
+import Seo  from "../shared/Seo";
 
 const Contact = () => {
   return (
