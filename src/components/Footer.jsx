@@ -32,22 +32,22 @@ const Footer = () => {
   };
   return (
     <div>
-      <a
+      {/* <a
        href="https://web.whatsapp.com/send?phone=8266006000&amp;text=Hi"
         className="whatsapp-float"
         target="_blank"
         rel="noopener noreferrer"
       >
         <i class="fab fa-whatsapp whatsapp-icon"></i>
-      </a>
-      {/* {showButton && (
+      </a> */}
+      {showButton && (
         <div
           onClick={scrollToTop}
           className="btn btn-secondary btn-lg-square rounded-circle back-to-top"
         >
           <i className="fa fa-arrow-up"></i>
         </div>
-      )} */}
+      )}
 
       {/* <!-- Footer Start --> */}
       <div
