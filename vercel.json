@@ -1,14 +1,14 @@
 {
     "redirects": [
       {
-        "source": "/(.*)",
+        "source": "/:path*",
         "has": [
           {
             "type": "host",
             "value": "dixitgadiwale.com"
           }
         ],
-        "destination": "https://www.dixitgadiwale.com/:1",
+        "destination": "https://www.dixitgadiwale.com/:path*",
         "permanent": true
       }
     ],
