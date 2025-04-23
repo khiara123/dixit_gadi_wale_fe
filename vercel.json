@@ -13,11 +13,22 @@
       }
     ],
     "rewrites": [
-      { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-      { "source": "/robots.txt", "destination": "/robots.txt" },
-      { "source": "/BingSiteAuth.xml", "destination": "/BingSiteAuth.xml" },
-      { "source": "/favicon.ico", "destination": "/favicon.ico" }
+      {
+        "source": "/sitemap.xml",
+        "destination": "/sitemap.xml"
+      },
+      {
+        "source": "/robots.txt",
+        "destination": "/robots.txt"
+      },
+      {
+        "source": "/BingSiteAuth.xml",
+        "destination": "/BingSiteAuth.xml"
+      },
+      {
+        "source": "/favicon.ico",
+        "destination": "/favicon.ico"
+      }
     ]
   }
-  
   
