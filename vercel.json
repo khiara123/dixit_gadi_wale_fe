@@ -1,10 +1,23 @@
 {
+    "redirects": [
+      {
+        "source": "/(.*)",
+        "has": [
+          {
+            "type": "host",
+            "value": "dixitgadiwale.com"
+          }
+        ],
+        "destination": "https://www.dixitgadiwale.com/:1",
+        "permanent": true
+      }
+    ],
     "rewrites": [
       { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
       { "source": "/robots.txt", "destination": "/robots.txt" },
       { "source": "/BingSiteAuth.xml", "destination": "/BingSiteAuth.xml" },
-      { "source": "/favicon.ico", "destination": "/favicon.ico" },
-      { "source": "/(.*)", "destination": "/" }
+      { "source": "/favicon.ico", "destination": "/favicon.ico" }
     ]
   }
+  
   
