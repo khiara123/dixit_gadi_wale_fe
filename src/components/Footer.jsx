@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import util from "../util/utils";
 
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
+  const [whatsAppURL, setWhatsAppURL] = useState("")
   const { pathname } = useLocation();
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,15 @@ const Footer = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+
+    const deviceName = util.detectDevice();
+    console.log("device name ", deviceName);
+    if (deviceName == 'Mobile') {
+      setWhatsAppURL(" https://wa.me/918266006000?text=Hi")
+    } else { 
+      setWhatsAppURL("https://web.whatsapp.com/send?phone=8266006000&amp;text=Hi")
+    }
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -30,16 +41,18 @@ const Footer = () => {
       behavior: "smooth", // smooth scroll
     });
   };
+
+ 
   return (
     <div>
-      {/* <a
-       href="https://web.whatsapp.com/send?phone=8266006000&amp;text=Hi"
+      <a
+       href={whatsAppURL}
         className="whatsapp-float"
         target="_blank"
         rel="noopener noreferrer"
       >
         <i class="fab fa-whatsapp whatsapp-icon"></i>
-      </a> */}
+      </a>
       {showButton && (
         <div
           onClick={scrollToTop}

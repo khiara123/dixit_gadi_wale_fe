@@ -9,5 +9,16 @@ const debounce = (func, delay) => {
 }
 
 
-const util = {debounce}
+const  detectDevice = () => {
+  const ua = navigator.userAgent;
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(ua);
+  const width = window.innerWidth;
+
+  if (isMobile || width <= 768) return "Mobile";
+  else if (width <= 1024) return "Tablet or Small Laptop";
+  else return "Desktop";
+}
+
+
+const util = {debounce, detectDevice}
 export default util
