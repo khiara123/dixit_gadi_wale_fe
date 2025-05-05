@@ -15,7 +15,7 @@ const About = () => {
       <Seo
         title="About Dixit Gadiwale - Trusted Vehicle Rental Service in Mathura and Virndavan"
         description="Dixit Gadiwale has been providing vehicle rentals in Mathura for 5+ years. Learn more about our story and team."
-        url="https://dixitgadiwale.com/about"
+        url="https://www.dixitgadiwale.com/about"
         image="https://dixitgadiwale.com/img/about-img-1.jpg"
       />
       {/* <!-- Header Start --> */}

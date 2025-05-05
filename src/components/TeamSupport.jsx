@@ -92,7 +92,7 @@ export const TeamSupport = () => {
               <div className="team-item p-4 pt-0">
                 <div className="team-img">
                   <img
-                    src="/img/team-3.jpg"
+                    src="/img/team-3.png"
                     className="img-fluid rounded w-100"
                     alt="Image"
                   />

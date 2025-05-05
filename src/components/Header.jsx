@@ -106,6 +106,26 @@ const Header = () => {
           >
             Contact
           </NavLink>
+          <div className="nav-item dropdown">
+                  <div
+                    className="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                  >
+                    Pages
+                  </div>
+                  <div className="dropdown-menu m-0">
+                    <NavLink to="term_and_condtions" className="dropdown-item">
+                     Term & Condition
+                    </NavLink>
+                    <NavLink to="security_policy" className="dropdown-item">
+                     Security Policy
+                    </NavLink>
+                    <NavLink to="blog" className="dropdown-item">
+                     Blogs
+                    </NavLink>
+                    
+                  </div>
+                </div>
           {!currentUser?.isLoggedIn && (
             <NavLink
               to="login"

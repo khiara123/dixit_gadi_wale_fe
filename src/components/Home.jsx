@@ -5,7 +5,7 @@ import FactCounter from "./FactCounter";
 import CentalAbout from "./CentalAbout";
 import Features from "./Features";
 import CarSteps from "./CarSteps";
-import { Banner } from "./Banner";
+import BlogSection from "./blog/BlogSection";
 import { TeamSupport } from "./TeamSupport";
 import { CentalServices } from "./CentalServices";
 import  Seo  from '../shared/Seo';
@@ -17,7 +17,7 @@ const Home = () => {
       <Seo
         title="Dixit Gadi wale | Trusted Car Rentals in Mathura | Bike Rent Mathura "
         description="Book car and bike rentals in mathura easily with Dixit Gadiwale. Affordable, reliable, and available 24/7."
-        url="https://dixitgadiwale.com"
+        url="https://www.dixitgadiwale.com"
         image="https://dixitgadiwale.com/img/carousel-2.jpg"
       />
       {/* <!-- Carousel Start --> */}
@@ -327,7 +327,7 @@ const Home = () => {
       <CentalAbout />
 
       <FactCounter />
-
+      <BlogSection />
       <CentalServices />
 
      

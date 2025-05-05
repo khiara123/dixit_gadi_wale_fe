@@ -25,4 +25,22 @@
     display: inline-block;
     font-size: 32px; /* Adjust icon size if needed */
   }
+  .blog-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden; /* Ensures no overflow if image is too big */
+  }
+  
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Covers the container while maintaining aspect ratio */
+  }
+  
+  @media (max-width: 768px) {
+    .blog-image img {
+      object-fit: contain; /* Makes sure the image is fully visible on smaller screens without cropping */
+    }
+  }
   

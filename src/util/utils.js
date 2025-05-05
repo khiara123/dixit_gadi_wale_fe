@@ -19,6 +19,10 @@ const  detectDevice = () => {
   else return "Desktop";
 }
 
+const capitalize = (str) => {
+   return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-const util = {debounce, detectDevice}
+
+const util = {debounce, detectDevice, capitalize}
 export default util

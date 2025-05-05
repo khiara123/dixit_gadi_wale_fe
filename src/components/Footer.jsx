@@ -97,6 +97,12 @@ const Footer = () => {
                 <Link to={"contact"}>
                   <i className="fas fa-angle-right me-2"></i> Contact us
                 </Link>
+                <Link to={"term_and_condtions"}>
+                  <i className="fas fa-angle-right me-2"></i> Term & Conditions
+                </Link>
+                <Link to={"security_policy"}>
+                  <i className="fas fa-angle-right me-2"></i> Security and Privacy
+                </Link>
               </div>
             </div>
             <div className="col-md-6 col-lg-6 col-xl-3">

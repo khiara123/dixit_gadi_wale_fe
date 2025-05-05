@@ -16,7 +16,14 @@ import ProtecteEmployee from './components/employee/employee';
 import ProtecteAddEmployee from './components/employee/AddEmployee';
 import ProtecteEditEmployee from './components/employee/EditEmployee';
 import ProtectedRootEmployee from './components/employee/RootEmployee';
+import TermAndCondition from './components/TermAndCondition';
+import SecurityPolicy from './components/SecurityPolicy';
 import Service from './components/Service';
+import RootBlog from './components/blog/RootBlog';
+import { Blog } from './components/blog/Blog';
+import BikeRentalBenifits from './components/blog/BikeRentalBenifits';
+import WhyChooseUs from './components/blog/WhyChooseUs';
+import TopPlaceToVisit from './components/blog/TopPlaceToVisit';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +65,37 @@ const router = createBrowserRouter([
         {
           path: "edit/:id",
           element: <ProtecteEditEmployee />
+        }
+
+        ]
+      },
+      {
+        path: 'term_and_condtions',
+        element: <TermAndCondition/>
+      },
+      {
+        path: 'security_policy',
+        element: <SecurityPolicy/>
+      },
+      {
+        path: 'blog',
+        element: <RootBlog/>,
+        children: [
+         {
+          path: "",
+          element: <Blog/>,
+         },
+          {
+          path: "bike-rental-benefits",
+          element:<BikeRentalBenifits/>
+        },
+        {
+          path: "why-choose-us",
+          element: < WhyChooseUs/>
+        },
+        {
+          path: "top-places-to-visit",
+          element: <TopPlaceToVisit/>
         }
 
         ]

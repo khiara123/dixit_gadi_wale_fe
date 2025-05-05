@@ -10,7 +10,7 @@ const Contact = () => {
        <Seo
               title="Dixit Gadi wale | Trusted Car Rentals in Mathura | Bike Rent Mathura | Vintage Car in Mathura"
               description="Book car and bike rentals in mathura easily with Dixit Gadiwale. Affordable, reliable, and available 24/7."
-              url="https://dixitgadiwale.com"
+              url="https://www.dixitgadiwale.com"
               image="https://dixitgadiwale.com/img/carousel-2.jpg"
             />
       {/* <!-- Header Start --> */}
