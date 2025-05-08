@@ -15,8 +15,22 @@ const verifyUser =  async () => {
     return userResponse;
 };
 
+const userInquiry = async (payload) => {
+    try {
+      const userInquiryResponse =   await apiMethod.post(API_END_POINT.INQUIRY_USER, payload);
+      const data =await userInquiryResponse;
+      console.log("data", data);
+      if(data.status ===200) {
+        return data
+      }
+       throw new Error("somethig went wrong");
+    } catch (error) {
+      throw new Error("somethig went wrong");
+    }
+  }
 
-const authService  = {loginUser, verifyUser}
+
+const authService  = {loginUser, verifyUser, userInquiry}
 
 
 export default  authService;

@@ -7,7 +7,9 @@ const API_END_POINT  = {
     REMOVE_EMPLOYEE: 'employee/remove',
     PRINT_EMPLOYEE: 'employee/print',
     GENRATE_OPT: 'employee/genrateOtp',
-    VERIFY_OTP: 'employee/verifyOtp'
+    VERIFY_OTP: 'employee/verifyOtp',
+    INQUIRY_USER: 'users/enquiry',
+    CONTACT_USER: 'users/contact'
 }
 
 export default API_END_POINT
