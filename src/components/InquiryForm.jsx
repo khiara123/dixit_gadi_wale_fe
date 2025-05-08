@@ -139,6 +139,7 @@ const InquiryForm = () => {
                   <option value="XUV_700">XUV 700</option>
                   <option value="Fortuner">Fortuner</option>
                   <option value="Bike/Scooty">Bike/Scooty</option>
+                  <option value="Others Car">Other Car</option>
                 </select>
               </div>
               {errors.carType && (

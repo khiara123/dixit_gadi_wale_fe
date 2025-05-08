@@ -124,14 +124,14 @@ export const TeamSupport = () => {
               <div className="team-item p-4 pt-0">
                 <div className="team-img">
                   <img
-                    src="/img/team-4.jpg"
+                    src="/img/team-4.jpeg"
                     className="img-fluid rounded w-100"
                     alt="Image"
                   />
                 </div>
                 <div className="team-content pt-4">
-                  <h4>KV Singh</h4>
-                  <p>Service Partner</p>
+                  <h4>Ankit Khaira</h4>
+                  <p>Technical Support</p>
                   <div className="team-icon d-flex justify-content-center">
                     <Link className="btn btn-square btn-light rounded-circle mx-1">
                       <i className="fab fa-facebook-f"></i>
