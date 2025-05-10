@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Seo  from "../shared/Seo";
 
+
 const Contact = () => {
   return (
     <>
@@ -283,6 +284,8 @@ const Contact = () => {
         </div>
       </div>
       {/* <!-- Contact End --> */}
+
+     
     </>
   );
 };

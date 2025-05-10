@@ -9,7 +9,8 @@ const API_END_POINT  = {
     GENRATE_OPT: 'employee/genrateOtp',
     VERIFY_OTP: 'employee/verifyOtp',
     INQUIRY_USER: 'users/enquiry',
-    CONTACT_USER: 'users/contact'
+    CONTACT_USER: 'users/contact',
+    MEDIA_GALLERY: 'users/gallery',
 }
 
 export default API_END_POINT

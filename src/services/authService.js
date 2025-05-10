@@ -29,8 +29,22 @@ const userInquiry = async (payload) => {
     }
   }
 
+  const userGallary = async () => {
+    try {
+      const gallaryResponse =   await apiMethod.get(API_END_POINT.MEDIA_GALLERY);
+      const data =await gallaryResponse;
+      console.log("data", data);
+      if(data.status ===200) {
+        return data
+      }
+       throw new Error("somethig went wrong");
+    } catch (error) {
+      throw new Error("somethig went wrong");
+    }
+  }
 
-const authService  = {loginUser, verifyUser, userInquiry}
+
+const authService  = {loginUser, verifyUser, userInquiry, userGallary}
 
 
 export default  authService;

@@ -106,6 +106,14 @@ const Header = () => {
           >
             Contact
           </NavLink>
+          <NavLink
+            to="media_gallery"
+            className={({ isActive }) =>
+              `nav-item nav-link ${isActive ? "active" : ""}`
+            }
+          >
+            Gallery
+          </NavLink>
           <div className="nav-item dropdown">
                   <div
                     className="nav-link dropdown-toggle"

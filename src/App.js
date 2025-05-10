@@ -24,6 +24,7 @@ import { Blog } from './components/blog/Blog';
 import BikeRentalBenifits from './components/blog/BikeRentalBenifits';
 import WhyChooseUs from './components/blog/WhyChooseUs';
 import TopPlaceToVisit from './components/blog/TopPlaceToVisit';
+import MediaGallery from './components/MediaGallery';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: 'security_policy',
         element: <SecurityPolicy/>
+      },
+      {
+        path: 'media_gallery',
+        element: <MediaGallery/>
       },
       {
         path: 'blog',
